@@ -1,0 +1,39 @@
+
+
+<%= form_for(@blog_post) do |f| %>
+
+<% if @blog_post.errors.any? %>
+    <div class="error_explanation">
+    	<h2><%= pluralize(@blog_post.errors.count, "error") %>
+    	prohibited this blog post from being save : 
+        </h2>
+<!-- this is the beginning of an UnorderedList, not underline -->
+    	<ul>
+    			<% blog_post.errors.full_messages.each do |message| %>
+    		<li><%= message %></li>
+    			<% end %>   		
+    	</ul>
+<!-- above this line this is the end of the UnorderedList -->
+	</div>	
+<% end %>
+
+
+    <div class="form-group">
+    	<%= f.text_field :title, class: "form-control", placeholder: "
+    	Enter you cool blog post name here.." %>
+    </div>
+
+    <div class="form-group">
+    <%= f.text_field :author, class: "form-control", placeholder: "author" %>
+	</div>
+
+	 <div class="form-group">
+	    <%= f.text_area :blog_entry, class: "form-control", rows: "12",
+	    placeholder: "Start typing away..." %>
+	 </div>
+
+	 <div class="actions">
+	 <%= f.submit "Post", class: "btn btn-default" %>
+	 </div>
+
+	 <% end %>
